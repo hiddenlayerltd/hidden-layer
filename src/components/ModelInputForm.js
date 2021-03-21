@@ -104,48 +104,32 @@ export default class Reservation extends React.Component {
                     </Column>
 
                     <Column>
-                      <InputContainer>
-                        <label htmlFor="input">USD amount</label>
-                        <input
-                            id="usd-input"
-                            type="decimal"
-                            name="USD"
-                            placeholder="E.g.  560.23 or 10000"
-                            onChange={this.handleInputChange} />
-                      </InputContainer>
-                      <InputContainer>
-                        <label htmlFor="input">Days to Review</label>
-                        <input id="days-input"
-                               type="number"
-                               name="days"
-                               placeholder="E.g. 3"
-                               onChange={this.handleInputChange} />
-                      </InputContainer>
+                      <label>
+                        Model 1: <input
+                          name="m1"
+                          type="checkbox"
+                          checked={this.state.m1}
+                          onChange={this.handleInputChange} />
+                      </label>
+
+                      <label>
+                        Model 2: <input
+                          name="m2"
+                          type="checkbox"
+                          checked={this.state.m2}
+                          onChange={this.handleInputChange} />
+                      </label>
+
+                      <label>
+                        Model 3: <input
+                          name="m3"
+                          type="checkbox"
+                          checked={this.state.m3}
+                          onChange={this.handleInputChange} />
+                      </label>
+
                     </Column>
                   </TwoColumn>
-                  <label>
-                    Model 1: <input
-                      name="m1"
-                      type="checkbox"
-                      checked={this.state.m1}
-                      onChange={this.handleInputChange} />
-                  </label>
-
-                  <label>
-                    Model 2: <input
-                      name="m2"
-                      type="checkbox"
-                      checked={this.state.m2}
-                      onChange={this.handleInputChange} />
-                  </label>
-
-                  <label>
-                    Model 3: <input
-                      name="m3"
-                      type="checkbox"
-                      checked={this.state.m3}
-                      onChange={this.handleInputChange} />
-                  </label>
 
                   <SubmitButton type="submit" value="Submit">Submit</SubmitButton>
                 </form>

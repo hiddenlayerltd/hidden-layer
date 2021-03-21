@@ -6,6 +6,7 @@ import GetStarted from "./pages/GetStarted.js";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
+import RiskInputForm from "./components/RiskInputForm";
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
           <Route path="/model/predict/">
             <ModelPage />
             <ModelInputForm />
+          </Route>
+          <Route path="/model/risk/">
+            <ModelPage />
+            <RiskInputForm />
           </Route>
           <Route path="/model">
             <ModelPage />
