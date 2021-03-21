@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "tailwindcss/dist/base.css";
+import "styles/globalStyles.css";
+import ModelInputForm from "components/ModelInputForm.js";
+import ModelPage from "pages/ModelPage.js";
+import GetStarted from "./pages/GetStarted.js";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from "react";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <Switch>
+          <Route path="/model/predict/">
+            <ModelPage />
+            <ModelInputForm />
+          </Route>
+          <Route path="/model">
+            <ModelPage />
+          </Route>
+          <Route path="/">
+            <GetStarted />
+          </Route>
+        </Switch>
+      </Router>
   );
 }
 
