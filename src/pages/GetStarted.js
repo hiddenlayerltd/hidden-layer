@@ -50,37 +50,65 @@ const CustomersLogoStrip = styled.div`
   }
 `;
 
-export default ({ roundedHeaderButton }) => {
-  return (
-    <>
-      <Header roundedHeaderButton={roundedHeaderButton} />
-      <Container>
-        <TwoColumn>
-          <LeftColumn>
-            <Heading>
-              Stock Market Predictions <span tw="text-primary-500">for you.</span>
-            </Heading>
-            <Paragraph>
-              Our platform allows you to select the financial factors you believe matter the most
-              when predicting the stock value in the future. The models use clever AI algorithms and the latest market data.
-            </Paragraph>
-            <Actions>
-              <input type="text" placeholder="Your E-mail Address" />
-              <Button><Link to="/model">Get Started</Link></Button>
-            </Actions>
-            <CustomersLogoStrip>
-              <p>Our TRUSTED Customers</p>
-              <img src={CustomersLogoStripImage} alt="Our Customers" />
-            </CustomersLogoStrip>
-          </LeftColumn>
-          <RightColumn>
-            <IllustrationContainer>
-              <img tw="min-w-0 w-full max-w-lg xl:max-w-3xl" src={DesignIllustration} alt="Design Illustration" />
-            </IllustrationContainer>
-          </RightColumn>
-        </TwoColumn>
-        <DecoratorBlob1 />
-      </Container>
-    </>
-  );
+export default class GetStarted extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleSubmit(event) {
+    console.log(event);
+    console.log(this.state);
+
+  }
+
+  handleChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value
+    });
+    console.log(event)
+  }
+
+  render() {
+    return (
+        <>
+          <Header roundedHeaderButton={this.roundedHeaderButton}/>
+          <Container>
+            <TwoColumn>
+              <LeftColumn>
+                <Heading>
+                  Stock Market Predictions <span tw="text-primary-500">for you.</span>
+                </Heading>
+                <Paragraph>
+                  Our platform allows you to select the financial factors you believe matter the most
+                  when predicting the stock value in the future. The models use clever AI algorithms and the latest market
+                  data.
+                </Paragraph>
+                <Actions>
+                  <input name="email" type="text" placeholder="Your E-mail Address" onChange={this.handleChange}/>
+                  <Link to="/model" email={this.state.email}><Button onClick={this.handleSubmit}>Get Started</Button></Link>
+                </Actions>
+                <CustomersLogoStrip>
+                  <p>Our TRUSTED Customers</p>
+                  <img src={CustomersLogoStripImage} alt="Our Customers"/>
+                </CustomersLogoStrip>
+              </LeftColumn>
+              <RightColumn>
+                <IllustrationContainer>
+                  <img tw="min-w-0 w-full max-w-lg xl:max-w-3xl" src={DesignIllustration} alt="Design Illustration"/>
+                </IllustrationContainer>
+              </RightColumn>
+            </TwoColumn>
+            <DecoratorBlob1/>
+          </Container>
+        </>
+    );
+  }
 };

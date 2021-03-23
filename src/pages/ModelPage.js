@@ -1,7 +1,6 @@
 import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import {css} from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading as HeadingTitle, Subheading } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { ReactComponent as UserIcon } from "feather-icons/dist/icons/user.svg";
@@ -42,70 +41,72 @@ const DecoratorBlob1 = tw(
 const DecoratorBlob2 = tw(
   SvgDecoratorBlob2
 )`-z-10 absolute top-0 left-0 w-48 h-48 transform -translate-x-32 translate-y-full opacity-25`;
+const blogPosts = [
+  {
+    author: "Ivo",
+    category: "Stock market",
+    title: "Model Prediction",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    model_type: "predict"
+  },
+  {
+    author: "Konstantin",
+    category: "Finance",
+    title: "Risk Assessment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    model_type: "risk"
+  }
+];
 
-export default ({
-  subheading = "Blog",
-  heading = <>We Love <span tw="text-primary-500">Writing.</span></>,
-  description = "Some amazing blog posts that are written by even more amazing people.",
-
-}) => {
-  const blogPosts = [
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      author: "Ivo",
-      category: "Stock market",
-      title: "Model Prediction",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      model_type: "predict"
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-      author: "Konstantin",
-      category: "Finance",
-      title: "Risk Assessment",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      model_type: "risk"
+export default class ModelPage extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+    this.state = {
+      subheading: "Blog",
+      heading: <>We Love <span tw="text-primary-500">Writing.</span></>,
+      description: "Some amazing blog posts that are written by even more amazing people."
     }
-  ];
-  return (
-    <Container>
-      <Content>
-        <HeadingInfoContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
-          <HeadingTitle>{heading}</HeadingTitle>
-          <HeadingDescription>{description}</HeadingDescription>
-        </HeadingInfoContainer>
-        <ThreeColumn>
-          {blogPosts.map((post, index) => (
-            <Column key={index}>
-              <Card>
-                <img src={StockImage2} alt="Our Customers" />
-                <Details>
-                  <MetaContainer>
-                    <Meta>
-                      <UserIcon />
-                      <div>{post.author}</div>
-                    </Meta>
-                    <Meta>
-                      <TagIcon />
-                      <div>{post.category}</div>
-                    </Meta>
-                  </MetaContainer>
-                  <Title>{post.title}</Title>
-                  <Description>{post.description}</Description>
-                  <Button>
-                    <Link to={`/model/${post.model_type}`}>Check</Link>
-                  </Button>
-                </Details>
-              </Card>
-            </Column>
-          ))}
-        </ThreeColumn>
-      </Content>
-      <DecoratorBlob1 />
-      <DecoratorBlob2 />
-    </Container>
-  );
+  }
+  render() {
+    return (
+        <Container>
+          <Content>
+            <HeadingInfoContainer>
+              {this.subheading && <Subheading>{this.subheading}</Subheading>}
+              <HeadingTitle>{this.heading}</HeadingTitle>
+              <HeadingDescription>{this.description}</HeadingDescription>
+            </HeadingInfoContainer>
+            <ThreeColumn>
+              {blogPosts.map((post, index) => (
+                  <Column key={index}>
+                    <Card>
+                      <img src={StockImage2} alt="Our Customers" />
+                      <Details>
+                        <MetaContainer>
+                          <Meta>
+                            <UserIcon />
+                            <div>{post.author}</div>
+                          </Meta>
+                          <Meta>
+                            <TagIcon />
+                            <div>{post.category}</div>
+                          </Meta>
+                        </MetaContainer>
+                        <Title>{post.title}</Title>
+                        <Description>{post.description}</Description>
+                        <Button>
+                          <Link to={`/model/${post.model_type}`}>Check</Link>
+                        </Button>
+                      </Details>
+                    </Card>
+                  </Column>
+              ))}
+            </ThreeColumn>
+          </Content>
+          <DecoratorBlob1 />
+          <DecoratorBlob2 />
+        </Container>
+    );
+  }
 };

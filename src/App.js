@@ -20,8 +20,7 @@ function App() {
             <ModelPage />
             <RiskInputForm />
           </Route>
-          <Route path="/model">
-            <ModelPage />
+          <Route path="/model" component={ModelPage}>
           </Route>
           <Route path="/">
             <GetStarted />
